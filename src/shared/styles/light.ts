@@ -3,12 +3,12 @@ import { palette } from './tokens';
 export const lightStyles = {
   colors: {
     bg: palette.white,
-    bgSecondary: palette.light50,
+    bgSecondary: palette.light100,
     text: palette.black,
     textSecondary: palette.dark500,
-    primary: palette.blue500,
-    primaryHover: palette.blue600,
-    border: palette.light200,
+    primary: palette.green500,
+    primaryHover: palette.green700,
+    border: palette.light300,
     error: palette.red500,
     errorBg: palette.red50,
     warning: palette.orange500,

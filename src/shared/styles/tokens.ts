@@ -7,15 +7,12 @@ export const palette = {
   light200: '#e5e7eb',
   light300: '#d1d5db',
 
-  dark400: '#9ca3af',
-  dark500: '#6b7280',
-  dark700: '#374151',
-  dark800: '#1f2937',
-  dark900: '#111827',
-  dark950: '#0a0f1a',
-
-  blue500: '#3b82f6',
-  blue600: '#2563eb',
+  dark400: '#b3b3b3',
+  dark500: '#8c8c8c',
+  dark700: '#4d4d4d',
+  dark800: '#333333',
+  dark900: '#242424',
+  dark950: '#141414',
 
   red50: '#fef2f2',
   red500: '#ef4444',

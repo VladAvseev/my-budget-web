@@ -1,8 +1,11 @@
+import { TestLayout } from '@/TestLayout';
+import './App.css';
+
 const App = () => {
   return (
-    <div>
-      <h1>React rsbuild base</h1>
-    </div>
+    <>
+      <TestLayout />
+    </>
   );
 };
 
