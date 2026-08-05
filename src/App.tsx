@@ -1,10 +1,10 @@
-import { TestLayout } from '@/TestLayout';
+import { ThemeExample } from '@/shared/theme';
 import './App.css';
 
 const App = () => {
   return (
     <>
-      <TestLayout />
+      <ThemeExample />
     </>
   );
 };

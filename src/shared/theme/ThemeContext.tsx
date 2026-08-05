@@ -1,4 +1,4 @@
-import { useStyles, type ThemeName } from '@/shared/styles';
+import { useStyles, type ThemeName } from './useStyles';
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
 import { getStoredTheme, setStoredTheme } from './storage';
 

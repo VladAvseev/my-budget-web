@@ -1,4 +1,4 @@
-import type { ThemeName } from '@/shared/styles';
+import type { ThemeName } from './useStyles';
 
 const THEME_STORAGE_KEY = 'theme';
 

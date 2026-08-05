@@ -14,35 +14,9 @@
 - **HTTP-клиент:** Axios
 - **Окружение:** Node.js с ES-модулями (`"type": "module"`)
 
-## Структура проекта
-
-```
-public/
-├── favicon.svg              # Фавиконка проекта
-└── index.html               # HTML-шаблон с точкой монтирования #root
-src/
-├── App.tsx                  # Корневой компонент
-├── App.css                  # Глобальные стили
-├── TestLayout.tsx           # Демо-компонент темы (временный)
-├── index.tsx                # Точка входа (createRoot + StrictMode + ThemeProvider)
-└── shared/
-    ├── api/                 # axios client (client.ts), apiGet, apiPost, index.ts
-    ├── styles/              # Дизайн-токены: common/light/dark, useStyles
-    └── theme/               # ThemeProvider, useTheme, useThemeStyles, storage
-.env                         # Общие переменные окружения (коммитится)
-.env.d.ts                    # Типы для Rsbuild env-переменных
-.gitignore                   # node_modules, dist
-.prettierrc                  # Конфигурация Prettier (singleQuote, semi, tabWidth: 2)
-.prettierignore              # Исключения для форматирования
-eslint.config.js             # Конфигурация ESLint (flat config, плагины React + TS)
-package.json                 # Скрипты, зависимости, type: "module"
-rsbuild.config.ts            # Конфигурация Rsbuild (плагины, алиасы, порты, сборка)
-tsconfig.json                # Строгая конфигурация TypeScript
-```
-
 ## Ключевые конвенции
 
-- **Импорты:** только через алиас `@/*` → `src/*` (например, `@/shared/theme`, `@/TestLayout`).
+- **Импорты:** только через алиас `@/*` → `src/*` (например, `@/shared/theme`, `@/App`).
 - **Стилизация:** использовать `useThemeStyles()` из `@/shared/theme` и дизайн-токены (`styles.colors`, `styles.spacing`, `styles.radius`, `styles.shadow`, `styles.typography`). Не хардкодить цвета, отступы и размеры в компонентах.
 - **Тема:** приложение обёрнуто в `ThemeProvider` на верхнем уровне (`index.tsx`). Тема переключается через `useTheme().setTheme('light' | 'dark')`, выбор сохраняется в localStorage.
 - **Работа с API:** только через `apiGet`/`apiPost` из `@/shared/api` (общий axios-клиент с `API_BASE_URL` и таймаутом). Поддерживается передача `signal` для отмены запросов.

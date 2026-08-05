@@ -39,18 +39,6 @@ Dev-сервер запустится на порту из переменной 
 | `DEV_PORT` | Порт dev-сервера | `3000` |
 | `API_BASE_URL` | Базовый URL API (baseURL axios-клиента) | — |
 
-## Структура
-
-```
-src/
-├── App.tsx                  # Корневой компонент
-├── index.tsx                # Точка входа (createRoot + StrictMode + ThemeProvider)
-└── shared/
-    ├── api/                 # axios client, apiGet, apiPost
-    ├── styles/              # Дизайн-токены: common/light/dark, useStyles
-    └── theme/               # ThemeProvider, useTheme, useThemeStyles, storage
-```
-
 ## Конвенции
 
 - Импорты только через алиас `@/*` → `src/*`.
