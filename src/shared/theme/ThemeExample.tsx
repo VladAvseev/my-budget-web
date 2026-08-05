@@ -34,7 +34,12 @@ const DemoCard = ({ title, children }: CardProps) => {
         boxShadow: styles.shadow.s,
       }}
     >
-      <div style={{ fontSize: styles.typography.fontSize.l, fontWeight: styles.typography.fontWeight.bold }}>
+      <div
+        style={{
+          fontSize: styles.typography.fontSize.l,
+          fontWeight: styles.typography.fontWeight.bold,
+        }}
+      >
         {title}
       </div>
       {children}
@@ -63,8 +68,12 @@ const DemoSwatch = ({ label, value }: SwatchProps) => {
           border: `1px solid ${styles.colors.border}`,
         }}
       />
-      <div style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>{label}</div>
-      <div style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>{value}</div>
+      <div style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>
+        {label}
+      </div>
+      <div style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>
+        {value}
+      </div>
     </div>
   );
 };
@@ -177,69 +186,6 @@ export const ThemeExample = () => {
         }}
       >
         <DemoCard title="Цвета">
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: styles.spacing.m,
-          }}
-        >
-          {colorEntries.map(([name, value]) => (
-            <DemoSwatch key={name} label={name} value={value} />
-          ))}
-        </div>
-      </DemoCard>
-
-      <DemoCard title="Типографика">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
-          <div style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>Размер шрифта</div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: styles.spacing.xs,
-            }}
-          >
-            {typographyEntries.map(([name, value]) => (
-              <div
-                key={name}
-                style={{
-                  fontSize: value,
-                  lineHeight: styles.typography.lineHeight.normal,
-                }}
-              >
-                {name} — {value}
-              </div>
-            ))}
-          </div>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
-          <div style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>Начертание</div>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: styles.spacing.xs,
-            }}
-          >
-            {fontWeightEntries.map(([name, value]) => (
-              <div
-                key={name}
-                style={{
-                  fontSize: styles.typography.fontSize.l,
-                  fontWeight: value,
-                }}
-              >
-                {name} ({value})
-              </div>
-            ))}
-          </div>
-        </div>
-      </DemoCard>
-
-      <DemoCard title="Радиусы и тени">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
-          <div style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>Радиусы</div>
           <div
             style={{
               display: 'flex',
@@ -247,76 +193,180 @@ export const ThemeExample = () => {
               gap: styles.spacing.m,
             }}
           >
-            {radiusEntries.map(([name, value]) => (
-              <div
-                key={name}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: styles.spacing.xs,
-                }}
-              >
-                <div
-                  style={{
-                    width: '56px',
-                    height: '56px',
-                    backgroundColor: styles.colors.primary,
-                    borderRadius: value,
-                  }}
-                />
-                <span style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>
-                  {name} ({value})
-                </span>
-              </div>
+            {colorEntries.map(([name, value]) => (
+              <DemoSwatch key={name} label={name} value={value} />
             ))}
           </div>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
-          <div style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}>Тени</div>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: styles.spacing.m,
-            }}
-          >
-          {shadowEntries.map(([name, value]) => (
+        </DemoCard>
+
+        <DemoCard title="Типографика">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
             <div
-              key={name}
+              style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}
+            >
+              Размер шрифта
+            </div>
+            <div
               style={{
-                width: '96px',
-                height: '56px',
-                backgroundColor: styles.colors.bgSecondary,
-                borderRadius: styles.radius.m,
-                boxShadow: value,
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: styles.typography.fontSize.s,
+                flexDirection: 'column',
+                gap: styles.spacing.xs,
               }}
             >
-              {name}
+              {typographyEntries.map(([name, value]) => (
+                <div
+                  key={name}
+                  style={{
+                    fontSize: value,
+                    lineHeight: styles.typography.lineHeight.normal,
+                  }}
+                >
+                  {name} — {value}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        </div>
-      </DemoCard>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
+            <div
+              style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}
+            >
+              Начертание
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: styles.spacing.xs,
+              }}
+            >
+              {fontWeightEntries.map(([name, value]) => (
+                <div
+                  key={name}
+                  style={{
+                    fontSize: styles.typography.fontSize.l,
+                    fontWeight: value,
+                  }}
+                >
+                  {name} ({value})
+                </div>
+              ))}
+            </div>
+          </div>
+        </DemoCard>
 
-      <DemoCard title="Кнопки-состояния">
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: styles.spacing.m,
-          }}
-        >
-          <DemoButton label="Primary" bg={styles.colors.primary} bgHover={styles.colors.primaryHover} fg={styles.colors.bg} />
-          <DemoButton label="Error" bg={styles.colors.error} bgHover={styles.colors.errorBg} fg={styles.colors.bg} />
-          <DemoButton label="Warning" bg={styles.colors.warning} bgHover={styles.colors.warningBg} fg={styles.colors.bg} />
-          <DemoButton label="Success" bg={styles.colors.success} bgHover={styles.colors.successBg} fg={styles.colors.bg} />
-        </div>
-      </DemoCard>
+        <DemoCard title="Радиусы и тени">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
+            <div
+              style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}
+            >
+              Радиусы
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: styles.spacing.m,
+              }}
+            >
+              {radiusEntries.map(([name, value]) => (
+                <div
+                  key={name}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: styles.spacing.xs,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: '56px',
+                      height: '56px',
+                      backgroundColor: styles.colors.primary,
+                      borderRadius: value,
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: styles.typography.fontSize.s,
+                      color: styles.colors.textSecondary,
+                    }}
+                  >
+                    {name} ({value})
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
+            <div
+              style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.textSecondary }}
+            >
+              Тени
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: styles.spacing.m,
+              }}
+            >
+              {shadowEntries.map(([name, value]) => (
+                <div
+                  key={name}
+                  style={{
+                    width: '96px',
+                    height: '56px',
+                    backgroundColor: styles.colors.bgSecondary,
+                    borderRadius: styles.radius.m,
+                    boxShadow: value,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: styles.typography.fontSize.s,
+                  }}
+                >
+                  {name}
+                </div>
+              ))}
+            </div>
+          </div>
+        </DemoCard>
+
+        <DemoCard title="Кнопки-состояния">
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: styles.spacing.m,
+            }}
+          >
+            <DemoButton
+              label="Primary"
+              bg={styles.colors.primary}
+              bgHover={styles.colors.primaryHover}
+              fg={styles.colors.bg}
+            />
+            <DemoButton
+              label="Error"
+              bg={styles.colors.error}
+              bgHover={styles.colors.errorBg}
+              fg={styles.colors.bg}
+            />
+            <DemoButton
+              label="Warning"
+              bg={styles.colors.warning}
+              bgHover={styles.colors.warningBg}
+              fg={styles.colors.bg}
+            />
+            <DemoButton
+              label="Success"
+              bg={styles.colors.success}
+              bgHover={styles.colors.successBg}
+              fg={styles.colors.bg}
+            />
+          </div>
+        </DemoCard>
       </div>
     </div>
   );
