@@ -10,9 +10,10 @@ export default defineConfig({
   },
   server: {
     port: Number(process.env.DEV_PORT) || 3000,
+    open: true,
   },
   html: {
     template: './public/index.html',
-    title: process.env.APP_TITLE || 'My Budget App',
+    title: process.env.APP_TITLE || 'React rsbuild base',
   },
 });
