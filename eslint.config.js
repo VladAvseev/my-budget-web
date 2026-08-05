@@ -24,5 +24,11 @@ export default tseslint.config(
     plugins: { 'react-hooks': reactHooks },
     rules: { ...reactHooks.configs.recommended.rules },
   },
+  {
+    rules: {
+      'no-console': 'warn',
+      '@typescript-eslint/consistent-type-imports': 'error',
+    },
+  },
   prettierConfig,
 );
