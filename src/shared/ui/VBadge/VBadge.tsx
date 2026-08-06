@@ -9,6 +9,8 @@ export interface VBadgeProps {
   style?: CSSProperties;
 }
 
+const FADED_ALPHA = 0.18;
+
 function hexToRgba(hex: string, alpha: number): string {
   const normalized = hex.replace('#', '');
   const full = normalized.length === 3
@@ -17,6 +19,11 @@ function hexToRgba(hex: string, alpha: number): string {
         .map((char) => char + char)
         .join('')
     : normalized;
+
+  if (!/^[0-9a-fA-F]{6}$/.test(full)) {
+    return hex;
+  }
+
   const intValue = parseInt(full, 16);
   const red = (intValue >> 16) & 255;
   const green = (intValue >> 8) & 255;
@@ -27,31 +34,46 @@ function hexToRgba(hex: string, alpha: number): string {
 export const VBadge = ({ children, variant = 'neutral', style }: VBadgeProps) => {
   const styles = useThemeStyles();
 
-  const color = variant === 'neutral'
-    ? styles.colors.textSecondary
-    : variant === 'accent'
-      ? styles.colors.accent
-      : variant === 'success'
-        ? styles.colors.success
-        : variant === 'warning'
-          ? styles.colors.warning
-          : styles.colors.error;
+  const variantStyles: Record<
+    VBadgeVariant,
+    { color: string; backgroundColor: string; borderColor: string }
+  > = {
+    neutral: {
+      color: styles.colors.textSecondary,
+      backgroundColor: styles.colors.bgSurface,
+      borderColor: styles.colors.border,
+    },
+    accent: {
+      color: styles.colors.accent,
+      backgroundColor: styles.colors.accentLight,
+      borderColor: 'transparent',
+    },
+    success: {
+      color: styles.colors.success,
+      backgroundColor: hexToRgba(styles.colors.success, FADED_ALPHA),
+      borderColor: 'transparent',
+    },
+    warning: {
+      color: styles.colors.warning,
+      backgroundColor: hexToRgba(styles.colors.warning, FADED_ALPHA),
+      borderColor: 'transparent',
+    },
+    danger: {
+      color: styles.colors.error,
+      backgroundColor: hexToRgba(styles.colors.error, FADED_ALPHA),
+      borderColor: 'transparent',
+    },
+  };
 
-  const backgroundColor = variant === 'neutral'
-    ? styles.colors.bgSurface
-    : variant === 'accent'
-      ? styles.colors.accentLight
-      : hexToRgba(color, 0.18);
-
-  const borderColor = variant === 'neutral' ? styles.colors.border : 'transparent';
+  const { color, backgroundColor, borderColor } = variantStyles[variant];
 
   return (
     <span
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        width: 'fit-content',
-        padding: `0 ${styles.spacing.s}`,
+        flexShrink: 0,
+        padding: `${styles.spacing.xs} ${styles.spacing.s}`,
         borderRadius: styles.radius.s,
         fontSize: styles.typography.fontSize.s,
         fontWeight: styles.typography.fontWeight.medium,
