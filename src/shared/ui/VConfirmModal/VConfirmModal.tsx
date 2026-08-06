@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useThemeStyles } from '@/shared/theme';
 import { VButton } from '@/shared/ui/VButton';
 import { VModal } from '@/shared/ui/VModal';
 import { VTextInput } from '@/shared/ui/VTextInput';
@@ -32,12 +33,20 @@ export const VConfirmModal = ({
   onCancel,
   onConfirm,
 }: VConfirmModalProps) => {
+  const styles = useThemeStyles();
   const [input, setInput] = useState('');
+  const [prevVisible, setPrevVisible] = useState(visible);
+
+  if (visible !== prevVisible) {
+    setPrevVisible(visible);
+    if (visible) {
+      setInput('');
+    }
+  }
 
   const canConfirm = !requireConfirmWord || input.trim().toLowerCase() === confirmWord.toLowerCase();
 
   const handleCancel = () => {
-    setInput('');
     onCancel();
   };
 
@@ -66,12 +75,13 @@ export const VConfirmModal = ({
     >
       <div>{message}</div>
       {requireConfirmWord && (
-        <div style={{ marginTop: 12 }}>
+        <div style={{ marginTop: styles.spacing.l }}>
           <VTextInput
             label="Введите слово для подтверждения"
             placeholder={confirmWord}
             value={input}
             onChange={setInput}
+            autoFocus
           />
         </div>
       )}
