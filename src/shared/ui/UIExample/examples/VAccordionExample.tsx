@@ -44,6 +44,13 @@ export const VAccordionExample = () => {
         >
           Содержимое недоступно.
         </VAccordion>
+        <VAccordion header={<span>Аккордеон с длинным содержимым</span>}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.m }}>
+            <div>Тело аккордеона анимируется по высоте, поэтому можно раскрывать контент любой длины.</div>
+            <div>Состояние вложенных элементов сохраняется при сворачивании, так как содержимое остаётся смонтированным.</div>
+            <div>Аккордеоны независимы и могут быть раскрыты одновременно.</div>
+          </div>
+        </VAccordion>
       </div>
     </div>
   );
