@@ -56,7 +56,6 @@ export const VAccordion = ({
           justifyContent: 'space-between',
           gap: styles.spacing.m,
           width: '100%',
-          boxSizing: 'border-box',
           cursor: disabled ? 'not-allowed' : 'pointer',
         }}
       >
@@ -65,7 +64,6 @@ export const VAccordion = ({
             flex: 1,
             minWidth: 0,
             padding: `${styles.spacing.s} ${styles.spacing.m}`,
-            boxSizing: 'border-box',
             fontSize: styles.typography.fontSize.m,
             color: styles.colors.textPrimary,
             opacity: disabled ? 0.5 : 1,
