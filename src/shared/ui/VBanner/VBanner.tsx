@@ -2,19 +2,21 @@ import { ClearIcon } from '@/shared/icons';
 import { useThemeStyles } from '@/shared/theme';
 import { hexToRgba } from '@/shared/utils';
 
-export type BannerType = 'success' | 'warning' | 'error';
+export type VBannerType = 'success' | 'warning' | 'error';
 
-export interface BannerProps {
+export interface VBannerProps {
+  type?: VBannerType;
   visible: boolean;
   message: string;
   onClose?: () => void;
 }
 
-interface BannerBaseProps extends BannerProps {
-  type: BannerType;
-}
-
-export const Banner = ({ type, visible, message, onClose }: BannerBaseProps) => {
+export const VBanner = ({
+  type = 'success',
+  visible,
+  message,
+  onClose,
+}: VBannerProps) => {
   const styles = useThemeStyles();
 
   if (!visible) {

@@ -7,7 +7,7 @@ import { VCardExample } from '@/shared/ui/UIExample/examples/VCardExample';
 import { VLoaderExample } from '@/shared/ui/UIExample/examples/VLoaderExample';
 import { VSelectExample } from '@/shared/ui/UIExample/examples/VSelectExample';
 import { VTextInputExample } from '@/shared/ui/UIExample/examples/VTextInputExample';
-import { VBannersExample } from '@/shared/ui/UIExample/examples/VBannersExample';
+import { VBannerExample } from '@/shared/ui/UIExample/examples/VBannerExample';
 import { VModalExample } from '@/shared/ui/UIExample/examples/VModalExample';
 import { VConfirmModalExample } from '@/shared/ui/UIExample/examples/VConfirmModalExample';
 import { VAccordionExample } from '@/shared/ui/UIExample/examples/VAccordionExample';
@@ -59,7 +59,7 @@ export const UIExample = () => {
           <VSelectExample />
           <VDatePickerExample />
           <VCardExample />
-          <VBannersExample />
+          <VBannerExample />
           <VModalExample />
           <VConfirmModalExample />
           <VToggleExample />

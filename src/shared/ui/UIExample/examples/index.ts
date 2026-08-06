@@ -4,7 +4,7 @@ export { VDatePickerExample } from './VDatePickerExample';
 export { VLoaderExample } from './VLoaderExample';
 export { VSelectExample } from './VSelectExample';
 export { VTextInputExample } from './VTextInputExample';
-export { VBannersExample } from './VBannersExample';
+export { VBannerExample } from './VBannerExample';
 export { VModalExample } from './VModalExample';
 export { VConfirmModalExample } from './VConfirmModalExample';
 export { VAccordionExample } from './VAccordionExample';

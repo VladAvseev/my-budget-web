@@ -1,8 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { ClearIcon } from '@/shared/icons';
 import { useThemeStyles } from '@/shared/theme';
-import { VErrorBanner } from '@/shared/ui/VBanners';
-
+import { VBanner } from '@/shared/ui/VBanner';
 export interface VModalProps {
   visible: boolean;
   title: string;
@@ -111,7 +110,7 @@ export const VModal = ({
           <div style={{ padding: `0 ${styles.spacing.xl}` }}>
             {Boolean(error) && (
               <div style={{ paddingTop: styles.spacing.l }}>
-                <VErrorBanner visible message={error as string} />
+                <VBanner type="error" visible message={error as string} />
               </div>
             )}
           </div>
