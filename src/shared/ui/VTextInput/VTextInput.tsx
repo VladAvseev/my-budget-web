@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type InputHTMLAttributes } from 'react';
+import { useId, useState, type ChangeEvent, type InputHTMLAttributes } from 'react';
 import { useThemeStyles } from '@/shared/theme';
 
 export interface VTextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
@@ -18,10 +18,12 @@ export const VTextInput = ({
   onBlur,
   onMouseEnter,
   onMouseLeave,
+  disabled,
   style,
   ...rest
 }: VTextInputProps) => {
   const styles = useThemeStyles();
+  const errorId = useId();
   const [isFocused, setIsFocused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -83,13 +85,17 @@ export const VTextInput = ({
           color: styles.colors.textPrimary,
           border: `1px solid ${borderColor}`,
           outline: 'none',
+          cursor: disabled ? 'not-allowed' : 'auto',
+          opacity: disabled ? 0.5 : 1,
+          transition: 'border-color 0.15s ease',
           ...style,
         }}
         aria-invalid={hasError}
+        aria-describedby={hasError ? errorId : undefined}
         {...rest}
       />
       {hasError && (
-        <span style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.error }}>
+        <span id={errorId} style={{ fontSize: styles.typography.fontSize.s, color: styles.colors.error }}>
           {error}
         </span>
       )}
@@ -107,6 +113,6 @@ function normalizeNumeric(value: string): string {
   if (parts.length < 2) {
     return integer;
   }
-  const fraction = parts[1].replace(/\D/g, '');
+  const fraction = parts[1].replace(/\D/g, '').slice(0, 2);
   return `${integer}.${fraction}`;
 }
