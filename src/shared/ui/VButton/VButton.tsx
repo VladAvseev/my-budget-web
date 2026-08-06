@@ -67,7 +67,7 @@ export const VButton = ({
         color,
         border,
         cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.5 : 1,
+        opacity: isDisabled && !isLoading ? 0.5 : 1,
         transition: 'background-color 0.15s ease, color 0.15s ease',
         ...style,
       }}
@@ -96,7 +96,7 @@ export const VButton = ({
             pointerEvents: 'none',
           }}
         >
-          <VLoader />
+          <VLoader color={color} />
         </span>
       )}
     </button>

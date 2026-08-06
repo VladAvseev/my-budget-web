@@ -11,7 +11,8 @@ export const VLoaderExample = () => {
       </div>
       <div style={{ display: 'flex', gap: styles.spacing.m, alignItems: 'center' }}>
         <VLoader />
-        <VLoader size="32px" />
+        <VLoader size={32} />
+        <VLoader size={24} color={styles.colors.accent} />
       </div>
     </div>
   );
