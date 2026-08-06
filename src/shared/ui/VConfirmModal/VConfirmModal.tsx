@@ -50,11 +50,11 @@ export const VConfirmModal = ({
       width={width}
       footer={
         <>
-          <VButton type="secondary" onClick={handleCancel} isDisabled={isLoading}>
+          <VButton variant="secondary" onClick={handleCancel} isDisabled={isLoading}>
             {cancelLabel}
           </VButton>
           <VButton
-            type="danger"
+            variant="danger"
             isLoading={isLoading}
             isDisabled={!canConfirm}
             onClick={onConfirm}

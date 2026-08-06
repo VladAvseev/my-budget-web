@@ -16,13 +16,13 @@ export const VBannerExample = () => {
       </div>
       <div style={{ display: 'flex', gap: styles.spacing.m }}>
         <VButton
-          type="danger"
+          variant="danger"
           onClick={() => setErrorVisible((prev) => !prev)}
         >
           {errorVisible ? 'Скрыть ошибку' : 'Показать ошибку'}
         </VButton>
         <VButton
-          type="secondary"
+          variant="secondary"
           onClick={() => setWarningVisible((prev) => !prev)}
         >
           {warningVisible ? 'Скрыть предупреждение' : 'Показать предупреждение'}

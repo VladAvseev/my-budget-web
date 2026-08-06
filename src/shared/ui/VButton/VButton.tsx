@@ -2,11 +2,11 @@ import { useState, type ButtonHTMLAttributes, type MouseEventHandler, type React
 import { useThemeStyles } from '@/shared/theme';
 import { VLoader } from '@/shared/ui/VLoader';
 
-export type VButtonType = 'primary' | 'secondary' | 'danger';
+export type VButtonVariant = 'primary' | 'secondary' | 'danger';
 
 export interface VButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick' | 'type'> {
   children?: ReactNode;
-  type?: VButtonType;
+  variant?: VButtonVariant;
   isDisabled?: boolean;
   isLoading?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -14,7 +14,7 @@ export interface VButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElemen
 
 export const VButton = ({
   children,
-  type = 'primary',
+  variant = 'primary',
   isDisabled,
   isLoading,
   onClick,
@@ -25,28 +25,34 @@ export const VButton = ({
   const [isHovered, setIsHovered] = useState(false);
   const disabled = isDisabled || isLoading;
 
-  const backgroundColor = type === 'primary'
-    ? isHovered
-      ? styles.colors.accentHover
-      : styles.colors.accent
-    : type === 'danger'
-      ? styles.colors.error
-      : isHovered
-        ? styles.colors.accentLight
-        : 'transparent';
+  const variantStyles: Record<VButtonVariant, { backgroundColor: string; border: string }> = {
+    primary: {
+      backgroundColor: isHovered ? styles.colors.accentHover : styles.colors.accent,
+      border: 'none',
+    },
+    secondary: {
+      backgroundColor: isHovered ? styles.colors.accentLight : 'transparent',
+      border: `1px solid ${styles.colors.border}`,
+    },
+    danger: {
+      backgroundColor: styles.colors.error,
+      border: 'none',
+    },
+  };
 
-  const color = type === 'secondary'
+  const color = variant === 'secondary'
     ? isHovered
       ? styles.colors.accent
       : styles.colors.textPrimary
     : styles.colors.bgPrimary;
 
-  const border = type === 'secondary' ? `1px solid ${styles.colors.border}` : 'none';
+  const { backgroundColor, border } = variantStyles[variant];
 
   return (
     <button
       type="button"
       disabled={disabled}
+      aria-busy={isLoading}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -56,12 +62,13 @@ export const VButton = ({
         borderRadius: styles.radius.m,
         fontSize: styles.typography.fontSize.m,
         fontWeight: styles.typography.fontWeight.medium,
+        fontFamily: 'inherit',
         backgroundColor,
         color,
         border,
         cursor: disabled ? 'not-allowed' : 'pointer',
         opacity: disabled ? 0.5 : 1,
-        filter: type === 'danger' && isHovered ? 'brightness(0.92)' : 'none',
+        transition: 'background-color 0.15s ease, color 0.15s ease',
         ...style,
       }}
       {...rest}

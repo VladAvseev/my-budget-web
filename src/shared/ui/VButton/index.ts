@@ -1,2 +1,2 @@
 export { VButton } from './VButton';
-export type { VButtonProps } from './VButton';
+export type { VButtonProps, VButtonVariant } from './VButton';

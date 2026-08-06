@@ -16,9 +16,9 @@ export const VButtonExample = () => {
           <VButton isDisabled>Отключена</VButton>
         </div>
         <div style={{ display: 'flex', gap: styles.spacing.m }}>
-          <VButton type="primary">Primary</VButton>
-          <VButton type="secondary">Secondary</VButton>
-          <VButton type="danger">Danger</VButton>
+          <VButton variant="primary">Primary</VButton>
+          <VButton variant="secondary">Secondary</VButton>
+          <VButton variant="danger">Danger</VButton>
         </div>
       </div>
     </div>

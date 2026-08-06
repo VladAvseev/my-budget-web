@@ -20,7 +20,7 @@ export const VBadgeExample = () => {
       <div style={{ display: 'flex', alignItems: 'center', gap: styles.spacing.m, flexWrap: 'wrap' }}>
         <span style={{ fontSize: styles.typography.fontSize.l }}>Бейдж рядом с кнопкой и заголовком</span>
         <VBadge variant="accent">3 операции</VBadge>
-        <VButton type="secondary">Действие</VButton>
+        <VButton variant="secondary">Действие</VButton>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ export const VToggleExample = () => {
         <VToggle disabled label="Отключено (выкл)" />
         <div style={{ display: 'flex', alignItems: 'center', gap: styles.spacing.m }}>
           <VToggle checked={controlled} onChange={setControlled} label="Управляемое состояние" />
-          <VButton type="secondary" onClick={() => setControlled((prev) => !prev)}>
+          <VButton variant="secondary" onClick={() => setControlled((prev) => !prev)}>
             Переключить
           </VButton>
         </div>

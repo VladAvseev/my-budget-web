@@ -47,7 +47,7 @@ export const VConfirmModalExample = () => {
       </div>
       <div style={{ display: 'flex', gap: styles.spacing.m }}>
         <VButton onClick={openWord}>Удалить категорию (с подтверждением)</VButton>
-        <VButton type="danger" onClick={openSimple}>
+        <VButton variant="danger" onClick={openSimple}>
           Удалить операцию (простое)
         </VButton>
       </div>

@@ -41,10 +41,10 @@ export const VModalExample = () => {
         error={error}
         footer={
           <>
-            <VButton type="secondary" onClick={() => setIsOpen(false)}>
+            <VButton variant="secondary" onClick={() => setIsOpen(false)}>
               Отмена
             </VButton>
-            <VButton type="primary" isLoading={isSaving} onClick={handleSave}>
+            <VButton variant="primary" isLoading={isSaving} onClick={handleSave}>
               Сохранить
             </VButton>
           </>
