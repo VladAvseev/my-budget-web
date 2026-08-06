@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, ClearIcon } from '@/shared/icons';
 import { useThemeStyles } from '@/shared/theme';
+import { buildCalendarCells, formatDisplay, isSameDay, parseISO, toISODate } from '@/shared/utils';
 
 export interface VDatePickerProps {
   label?: string;
@@ -27,6 +28,10 @@ const MONTH_LABELS = [
   'Ноябрь',
   'Декабрь',
 ];
+
+const DAY_CELL_SIZE = 36;
+const WEEKDAY_HEIGHT = 28;
+const NAV_BUTTON_SIZE = 28;
 
 export const VDatePicker = ({
   label,
@@ -68,7 +73,7 @@ export const VDatePicker = ({
     }
   };
 
-  const handleClear = (event: React.MouseEvent) => {
+  const handleClear = (event: ReactMouseEvent) => {
     event.stopPropagation();
     onChange?.('');
   };
@@ -116,6 +121,7 @@ export const VDatePicker = ({
           cursor: disabled ? 'not-allowed' : 'pointer',
           opacity: disabled ? 0.5 : 1,
           userSelect: 'none',
+          transition: 'border-color 0.15s ease',
         }}
       >
         <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -247,8 +253,8 @@ const CalendarDropdown = ({ value, onSelect }: CalendarDropdownProps) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              width: 36,
-              height: 28,
+              width: DAY_CELL_SIZE,
+              height: WEEKDAY_HEIGHT,
               fontSize: styles.typography.fontSize.s,
               fontWeight: styles.typography.fontWeight.medium,
               color: styles.colors.textSecondary,
@@ -273,7 +279,7 @@ const CalendarDropdown = ({ value, onSelect }: CalendarDropdownProps) => {
 
           return (
             <DayCell
-              key={day.toISOString()}
+              key={toISODate(day)}
               day={day}
               inCurrentMonth={inCurrentMonth}
               isSelected={isSelected}
@@ -316,6 +322,8 @@ const DayCell = ({ day, inCurrentMonth, isSelected, isToday, onClick }: DayCellP
   return (
     <button
       type="button"
+      aria-selected={isSelected}
+      aria-current={isToday ? 'date' : undefined}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -323,8 +331,8 @@ const DayCell = ({ day, inCurrentMonth, isSelected, isToday, onClick }: DayCellP
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 36,
-        height: 36,
+        width: DAY_CELL_SIZE,
+        height: DAY_CELL_SIZE,
         padding: 0,
         borderRadius: styles.radius.s,
         fontSize: styles.typography.fontSize.m,
@@ -359,8 +367,8 @@ const CalendarNavButton = ({ children, onClick, ariaLabel }: CalendarNavButtonPr
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 28,
-        height: 28,
+        width: NAV_BUTTON_SIZE,
+        height: NAV_BUTTON_SIZE,
         padding: 0,
         border: 'none',
         borderRadius: styles.radius.s,
@@ -372,49 +380,3 @@ const CalendarNavButton = ({ children, onClick, ariaLabel }: CalendarNavButtonPr
     </button>
   );
 };
-
-function parseISO(value?: string): Date | null {
-  if (!value) {
-    return null;
-  }
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
-  if (!match) {
-    return null;
-  }
-  return new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
-}
-
-function toISODate(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
-}
-
-function formatDisplay(value: string): string {
-  const date = parseISO(value);
-  if (!date) {
-    return value;
-  }
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  return `${day}.${month}.${date.getFullYear()}`;
-}
-
-function buildCalendarCells(year: number, month: number): Date[] {
-  const firstDay = new Date(year, month, 1);
-  const mondayOffset = (firstDay.getDay() + 6) % 7;
-  const gridStart = new Date(year, month, 1 - mondayOffset);
-
-  return Array.from({ length: 42 }, (_, index) => {
-    const day = new Date(gridStart);
-    day.setDate(gridStart.getDate() + index);
-    return day;
-  });
-}
-
-function isSameDay(a: Date, b: Date | null): boolean {
-  return Boolean(
-    b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(),
-  );
-}
