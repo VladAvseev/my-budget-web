@@ -1,6 +1,15 @@
 import { useState, type CSSProperties, type ReactNode } from 'react';
 import { useThemeStyles } from '@/shared/theme';
 
+const TRACK_WIDTH = 36;
+const TRACK_HEIGHT = 20;
+const HANDLE_SIZE = 14;
+const KNOB_GAP = 3;
+
+const handleLeft = (checked: boolean) =>
+  checked ? TRACK_WIDTH - HANDLE_SIZE - KNOB_GAP : KNOB_GAP;
+const handleTop = (TRACK_HEIGHT - HANDLE_SIZE) / 2;
+
 export interface VToggleProps {
   checked?: boolean;
   defaultChecked?: boolean;
@@ -58,8 +67,8 @@ export const VToggle = ({
         onMouseLeave={() => setIsHovered(false)}
         style={{
           position: 'relative',
-          width: '44px',
-          height: '24px',
+          width: TRACK_WIDTH,
+          height: TRACK_HEIGHT,
           flexShrink: 0,
           padding: 0,
           border: 'none',
@@ -73,11 +82,11 @@ export const VToggle = ({
         <span
           style={{
             position: 'absolute',
-            top: '4px',
-            left: isChecked ? '24px' : '4px',
-            width: '16px',
-            height: '16px',
-            borderRadius: styles.radius.s,
+            top: handleTop,
+            left: handleLeft(isChecked),
+            width: HANDLE_SIZE,
+            height: HANDLE_SIZE,
+            borderRadius: styles.radius.round,
             backgroundColor: handleColor,
             boxShadow: styles.shadow.s,
             transition: 'left 0.15s ease, background-color 0.15s ease',
