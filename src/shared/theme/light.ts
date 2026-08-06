@@ -1,19 +1,15 @@
-import { palette } from './tokens';
-
 export const lightStyles = {
   colors: {
-    bg: palette.white,
-    bgSecondary: palette.light100,
-    text: palette.black,
-    textSecondary: palette.dark500,
-    primary: palette.green500,
-    primaryHover: palette.green700,
-    border: palette.light300,
-    error: palette.red500,
-    errorBg: palette.red50,
-    warning: palette.orange500,
-    warningBg: palette.orange50,
-    success: palette.green500,
-    successBg: palette.green50,
+    bgPrimary: '#FAFAFA',
+    bgSurface: '#FFFFFF',
+    textPrimary: '#1C1C1E',
+    textSecondary: '#6B7280',
+    border: '#E5E7EB',
+    accent: '#059669',
+    accentHover: '#047857',
+    accentLight: '#D1FAE5',
+    success: '#10B981',
+    warning: '#F59E0B',
+    error: '#EF4444',
   },
 };

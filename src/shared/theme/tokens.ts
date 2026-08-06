@@ -1,32 +1,3 @@
-export const palette = {
-  white: '#ffffff',
-  black: '#000000',
-
-  light50: '#f9fafb',
-  light100: '#f3f4f6',
-  light200: '#e5e7eb',
-  light300: '#d1d5db',
-
-  dark400: '#b3b3b3',
-  dark500: '#8c8c8c',
-  dark700: '#4d4d4d',
-  dark800: '#333333',
-  dark900: '#242424',
-  dark950: '#141414',
-
-  red50: '#fef2f2',
-  red500: '#ef4444',
-  red700: '#b91c1c',
-
-  orange50: '#fff7ed',
-  orange500: '#f97316',
-  orange700: '#c2410c',
-
-  green50: '#f0fdf4',
-  green500: '#22c55e',
-  green700: '#15803d',
-} as const;
-
 export const typography = {
   fontFamily: "'Inter', sans-serif",
   fontSize: {

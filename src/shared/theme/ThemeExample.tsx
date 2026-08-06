@@ -29,7 +29,7 @@ const DemoCard = ({ title, children }: CardProps) => {
         flexDirection: 'column',
         gap: styles.spacing.m,
         padding: styles.spacing.l,
-        backgroundColor: styles.colors.bgSecondary,
+                    backgroundColor: styles.colors.bgSurface,
         borderRadius: styles.radius.m,
         boxShadow: styles.shadow.s,
       }}
@@ -110,19 +110,17 @@ export const ThemeExample = () => {
   const swapTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
   const colorEntries: [keyof typeof styles.colors, string][] = [
-    ['bg', styles.colors.bg],
-    ['bgSecondary', styles.colors.bgSecondary],
-    ['text', styles.colors.text],
+    ['bgPrimary', styles.colors.bgPrimary],
+    ['bgSurface', styles.colors.bgSurface],
+    ['textPrimary', styles.colors.textPrimary],
     ['textSecondary', styles.colors.textSecondary],
-    ['primary', styles.colors.primary],
-    ['primaryHover', styles.colors.primaryHover],
     ['border', styles.colors.border],
-    ['error', styles.colors.error],
-    ['errorBg', styles.colors.errorBg],
-    ['warning', styles.colors.warning],
-    ['warningBg', styles.colors.warningBg],
+    ['accent', styles.colors.accent],
+    ['accentHover', styles.colors.accentHover],
+    ['accentLight', styles.colors.accentLight],
     ['success', styles.colors.success],
-    ['successBg', styles.colors.successBg],
+    ['warning', styles.colors.warning],
+    ['error', styles.colors.error],
   ];
 
   const typographyEntries: [string, string][] = [
@@ -162,17 +160,17 @@ export const ThemeExample = () => {
         gap: styles.spacing.xl,
         padding: styles.spacing.xl,
         boxSizing: 'border-box',
-        backgroundColor: styles.colors.bg,
-        color: styles.colors.text,
+        backgroundColor: styles.colors.bgPrimary,
+        color: styles.colors.textPrimary,
       }}
     >
       <div style={{ width: '100%' }}>
         <DemoCard title={`Текущая тема: ${theme}`}>
           <DemoButton
             label={theme === 'light' ? 'Переключить на тёмную' : 'Переключить на светлую'}
-            bg={styles.colors.primary}
-            bgHover={styles.colors.primaryHover}
-            fg={styles.colors.bg}
+            bg={styles.colors.accent}
+            bgHover={styles.colors.accentHover}
+            fg={styles.colors.bgPrimary}
             onClick={swapTheme}
           />
         </DemoCard>
@@ -282,7 +280,7 @@ export const ThemeExample = () => {
                     style={{
                       width: '56px',
                       height: '56px',
-                      backgroundColor: styles.colors.primary,
+                      backgroundColor: styles.colors.accent,
                       borderRadius: value,
                     }}
                   />
@@ -317,7 +315,7 @@ export const ThemeExample = () => {
                   style={{
                     width: '96px',
                     height: '56px',
-                    backgroundColor: styles.colors.bgSecondary,
+        backgroundColor: styles.colors.bgSurface,
                     borderRadius: styles.radius.m,
                     boxShadow: value,
                     display: 'flex',
@@ -343,27 +341,27 @@ export const ThemeExample = () => {
           >
             <DemoButton
               label="Primary"
-              bg={styles.colors.primary}
-              bgHover={styles.colors.primaryHover}
-              fg={styles.colors.bg}
+              bg={styles.colors.accent}
+              bgHover={styles.colors.accentHover}
+              fg={styles.colors.bgPrimary}
             />
             <DemoButton
               label="Error"
               bg={styles.colors.error}
-              bgHover={styles.colors.errorBg}
-              fg={styles.colors.bg}
+              bgHover={styles.colors.error}
+              fg={styles.colors.bgPrimary}
             />
             <DemoButton
               label="Warning"
               bg={styles.colors.warning}
-              bgHover={styles.colors.warningBg}
-              fg={styles.colors.bg}
+              bgHover={styles.colors.warning}
+              fg={styles.colors.bgPrimary}
             />
             <DemoButton
               label="Success"
               bg={styles.colors.success}
-              bgHover={styles.colors.successBg}
-              fg={styles.colors.bg}
+              bgHover={styles.colors.success}
+              fg={styles.colors.bgPrimary}
             />
           </div>
         </DemoCard>
