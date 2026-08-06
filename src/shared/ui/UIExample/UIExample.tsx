@@ -10,6 +10,9 @@ import { VTextInputExample } from '@/shared/ui/UIExample/examples/VTextInputExam
 import { VBannersExample } from '@/shared/ui/UIExample/examples/VBannersExample';
 import { VModalExample } from '@/shared/ui/UIExample/examples/VModalExample';
 import { VConfirmModalExample } from '@/shared/ui/UIExample/examples/VConfirmModalExample';
+import { VAccordionExample } from '@/shared/ui/UIExample/examples/VAccordionExample';
+import { VToggleExample } from '@/shared/ui/UIExample/examples/VToggleExample';
+import { VBadgeExample } from '@/shared/ui/UIExample/examples/VBadgeExample';
 
 export const UIExample = () => {
   const { theme, setTheme } = useTheme();
@@ -59,6 +62,9 @@ export const UIExample = () => {
           <VBannersExample />
           <VModalExample />
           <VConfirmModalExample />
+          <VToggleExample />
+          <VAccordionExample />
+          <VBadgeExample />
         </div>
       </VCard>
     </div>

@@ -7,3 +7,6 @@ export { VTextInputExample } from './VTextInputExample';
 export { VBannersExample } from './VBannersExample';
 export { VModalExample } from './VModalExample';
 export { VConfirmModalExample } from './VConfirmModalExample';
+export { VAccordionExample } from './VAccordionExample';
+export { VToggleExample } from './VToggleExample';
+export { VBadgeExample } from './VBadgeExample';
