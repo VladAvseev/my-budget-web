@@ -1,9 +1,7 @@
+import type { HTMLAttributes } from 'react';
 import { useThemeStyles } from '@/shared/theme';
-import type { HTMLAttributes, ReactNode } from 'react';
 
-export interface VCardProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
-}
+export type VCardProps = HTMLAttributes<HTMLDivElement>;
 
 export const VCard = ({ children, style, ...rest }: VCardProps) => {
   const styles = useThemeStyles();
@@ -14,6 +12,8 @@ export const VCard = ({ children, style, ...rest }: VCardProps) => {
         backgroundColor: styles.colors.bgSurface,
         borderRadius: styles.radius.l,
         boxShadow: styles.shadow.m,
+        border: `1px solid ${styles.colors.border}`,
+        overflow: 'hidden',
         padding: styles.spacing.m,
         ...style,
       }}
