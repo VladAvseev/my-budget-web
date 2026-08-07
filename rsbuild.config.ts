@@ -9,7 +9,7 @@ export default defineConfig({
     },
   },
   server: {
-    port: Number(process.env.DEV_PORT) || 3000,
+    port: Number(process.env.DEV_PORT) || 3001,
     open: true,
   },
   html: {
