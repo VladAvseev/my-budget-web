@@ -1,6 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { useThemeStyles } from '@/shared/theme';
-import { hexToRgba } from '@/shared/utils';
 
 export type VBadgeVariant = 'neutral' | 'accent' | 'success' | 'warning' | 'danger';
 
@@ -9,8 +8,6 @@ export interface VBadgeProps {
   variant?: VBadgeVariant;
   style?: CSSProperties;
 }
-
-const FADED_ALPHA = 0.18;
 
 export const VBadge = ({ children, variant = 'neutral', style }: VBadgeProps) => {
   const styles = useThemeStyles();
@@ -31,18 +28,18 @@ export const VBadge = ({ children, variant = 'neutral', style }: VBadgeProps) =>
     },
     success: {
       color: styles.colors.success,
-      backgroundColor: hexToRgba(styles.colors.success, FADED_ALPHA),
-      borderColor: 'transparent',
+      backgroundColor: styles.colors.successBg,
+      borderColor: styles.colors.successBorder,
     },
     warning: {
       color: styles.colors.warning,
-      backgroundColor: hexToRgba(styles.colors.warning, FADED_ALPHA),
-      borderColor: 'transparent',
+      backgroundColor: styles.colors.warningBg,
+      borderColor: styles.colors.warningBorder,
     },
     danger: {
       color: styles.colors.error,
-      backgroundColor: hexToRgba(styles.colors.error, FADED_ALPHA),
-      borderColor: 'transparent',
+      backgroundColor: styles.colors.errorBg,
+      borderColor: styles.colors.errorBorder,
     },
   };
 

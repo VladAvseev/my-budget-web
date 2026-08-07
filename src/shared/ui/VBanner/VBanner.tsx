@@ -1,6 +1,5 @@
 import { ClearIcon } from '@/shared/icons';
 import { useThemeStyles } from '@/shared/theme';
-import { hexToRgba } from '@/shared/utils';
 
 export type VBannerType = 'success' | 'warning' | 'error';
 
@@ -24,8 +23,8 @@ export const VBanner = ({
   }
 
   const color = styles.colors[type];
-  const backgroundColor = hexToRgba(color, 0.1);
-  const borderColor = hexToRgba(color, 0.25);
+  const backgroundColor = styles.colors[`${type}Bg`];
+  const borderColor = styles.colors[`${type}Border`];
 
   return (
     <div
