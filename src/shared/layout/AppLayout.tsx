@@ -168,7 +168,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             color: styles.colors.textPrimary,
           }}
         >
-          My Budget
+          Мой бюджет
         </div>
         <VButton variant="secondary" onClick={() => setIsMenuOpen(true)} style={{ padding: `${styles.spacing.xs} ${styles.spacing.s}` }}>
           Меню
