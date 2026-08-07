@@ -1,5 +1,4 @@
 export { VButtonExample } from './VButtonExample';
-export { VCardExample } from './VCardExample';
 export { VDatePickerExample } from './VDatePickerExample';
 export { VLoaderExample } from './VLoaderExample';
 export { VSelectExample } from './VSelectExample';

@@ -3,20 +3,17 @@ import { useThemeStyles } from '@/shared/theme';
 import { VButton } from '@/shared/ui/VButton';
 import { VConfirmModal } from '@/shared/ui/VConfirmModal';
 
+type ModalKind = 'delete' | 'fail' | null;
+
 export const VConfirmModalExample = () => {
   const styles = useThemeStyles();
-  const [kind, setKind] = useState<'word' | 'simple' | null>(null);
+  const [kind, setKind] = useState<ModalKind>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | undefined>();
 
-  const openWord = () => {
+  const open = (next: Exclude<ModalKind, null>) => {
     setError(undefined);
-    setKind('word');
-  };
-
-  const openSimple = () => {
-    setError(undefined);
-    setKind('simple');
+    setKind(next);
   };
 
   const handleDelete = () => {
@@ -37,34 +34,26 @@ export const VConfirmModalExample = () => {
     }, 700);
   };
 
-  const isOpen = kind !== null;
-  const requireConfirmWord = kind === 'word';
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.m }}>
       <div style={{ fontSize: styles.typography.fontSize.m, color: styles.colors.textSecondary }}>
         VConfirmModal
       </div>
       <div style={{ display: 'flex', gap: styles.spacing.m }}>
-        <VButton onClick={openWord}>Удалить категорию (с подтверждением)</VButton>
-        <VButton variant="danger" onClick={openSimple}>
-          Удалить операцию (простое)
+        <VButton onClick={() => open('delete')}>Удалить операцию</VButton>
+        <VButton variant="danger" onClick={() => open('fail')}>
+          Удалить операцию (с ошибкой)
         </VButton>
       </div>
 
       <VConfirmModal
-        visible={isOpen}
-        title={requireConfirmWord ? 'Удаление категории' : 'Удаление операции'}
-        message={
-          requireConfirmWord
-            ? 'Категория будет удалена безвозвратно вместе со всеми операциями в ней. Для подтверждения введите «подтвердить».'
-            : 'Операция будет удалена безвозвратно. Вы уверены, что хотите продолжить?'
-        }
+        visible={kind !== null}
+        title="Удаление операции"
+        message="Операция будет удалена безвозвратно. Вы уверены, что хотите продолжить?"
         confirmLabel="Удалить"
-        requireConfirmWord={requireConfirmWord}
         isLoading={isDeleting}
         error={error}
-        onConfirm={requireConfirmWord ? handleDelete : handleFail}
+        onConfirm={kind === 'fail' ? handleFail : handleDelete}
         onCancel={() => setKind(null)}
       />
     </div>

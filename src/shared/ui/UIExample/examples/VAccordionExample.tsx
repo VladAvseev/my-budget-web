@@ -10,11 +10,7 @@ export const VAccordionExample = () => {
         VAccordion
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.s }}>
-        <VAccordion header={<span>Аккордеон с текстом</span>}>
-          Содержимое аккордеона. Здесь может быть любой текст, например описание операции.
-        </VAccordion>
         <VAccordion
-          defaultOpen
           header={
             <span style={{ display: 'flex', alignItems: 'center', gap: styles.spacing.m }}>
               Аккордеон с бейджем и суммой
@@ -38,18 +34,8 @@ export const VAccordionExample = () => {
             <div>Кафе — 850 ₽</div>
           </div>
         </VAccordion>
-        <VAccordion
-          header={<span>Отключённый аккордеон</span>}
-          disabled
-        >
+        <VAccordion header={<span>Отключённый аккордеон</span>} disabled>
           Содержимое недоступно.
-        </VAccordion>
-        <VAccordion header={<span>Аккордеон с длинным содержимым</span>}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.m }}>
-            <div>Тело аккордеона анимируется по высоте, поэтому можно раскрывать контент любой длины.</div>
-            <div>Состояние вложенных элементов сохраняется при сворачивании, так как содержимое остаётся смонтированным.</div>
-            <div>Аккордеоны независимы и могут быть раскрыты одновременно.</div>
-          </div>
         </VAccordion>
       </div>
     </div>
