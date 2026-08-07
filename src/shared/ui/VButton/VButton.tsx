@@ -1,15 +1,18 @@
-import { useState, type ButtonHTMLAttributes, type MouseEventHandler, type ReactNode } from 'react';
 import { useThemeStyles } from '@/shared/theme';
 import { VLoader } from '@/shared/ui/VLoader';
+import { useState, type ButtonHTMLAttributes, type ReactNode } from 'react';
 
 export type VButtonVariant = 'primary' | 'secondary' | 'danger';
 
-export interface VButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick' | 'type'> {
+export interface VButtonProps extends Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'onClick' | 'type'
+> {
   children?: ReactNode;
   variant?: VButtonVariant;
   isDisabled?: boolean;
   isLoading?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: any;
 }
 
 export const VButton = ({
@@ -40,11 +43,12 @@ export const VButton = ({
     },
   };
 
-  const color = variant === 'secondary'
-    ? isHovered
-      ? styles.colors.accent
-      : styles.colors.textPrimary
-    : styles.colors.bgPrimary;
+  const color =
+    variant === 'secondary'
+      ? isHovered
+        ? styles.colors.accent
+        : styles.colors.textPrimary
+      : styles.colors.bgPrimary;
 
   const { backgroundColor, border } = variantStyles[variant];
 

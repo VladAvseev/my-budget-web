@@ -1,18 +1,18 @@
-import type { ReactNode } from 'react';
 import { useTheme, useThemeStyles } from '@/shared/theme';
-import { VCard } from '@/shared/ui/VCard';
-import { VButton } from '@/shared/ui/VButton';
-import { VDatePickerExample } from '@/shared/ui/UIExample/examples/VDatePickerExample';
+import { VAccordionExample } from '@/shared/ui/UIExample/examples/VAccordionExample';
+import { VBadgeExample } from '@/shared/ui/UIExample/examples/VBadgeExample';
+import { VBannerExample } from '@/shared/ui/UIExample/examples/VBannerExample';
 import { VButtonExample } from '@/shared/ui/UIExample/examples/VButtonExample';
+import { VConfirmModalExample } from '@/shared/ui/UIExample/examples/VConfirmModalExample';
+import { VDatePickerExample } from '@/shared/ui/UIExample/examples/VDatePickerExample';
 import { VLoaderExample } from '@/shared/ui/UIExample/examples/VLoaderExample';
+import { VModalExample } from '@/shared/ui/UIExample/examples/VModalExample';
 import { VSelectExample } from '@/shared/ui/UIExample/examples/VSelectExample';
 import { VTextInputExample } from '@/shared/ui/UIExample/examples/VTextInputExample';
-import { VBannerExample } from '@/shared/ui/UIExample/examples/VBannerExample';
-import { VModalExample } from '@/shared/ui/UIExample/examples/VModalExample';
-import { VConfirmModalExample } from '@/shared/ui/UIExample/examples/VConfirmModalExample';
-import { VAccordionExample } from '@/shared/ui/UIExample/examples/VAccordionExample';
 import { VToggleExample } from '@/shared/ui/UIExample/examples/VToggleExample';
-import { VBadgeExample } from '@/shared/ui/UIExample/examples/VBadgeExample';
+import { VButton } from '@/shared/ui/VButton';
+import { VCard } from '@/shared/ui/VCard';
+import type { ReactNode } from 'react';
 
 interface SectionProps {
   title: string;
@@ -58,9 +58,7 @@ export const UIExample = () => {
     >
       <div
         style={{
-          maxWidth: 960,
           margin: '0 auto',
-          padding: styles.spacing.xxl,
           display: 'flex',
           flexDirection: 'column',
           gap: styles.spacing.xl,
@@ -76,10 +74,17 @@ export const UIExample = () => {
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: styles.spacing.xs }}>
-            <div style={{ fontSize: styles.typography.fontSize.xxl, fontWeight: styles.typography.fontWeight.bold }}>
+            <div
+              style={{
+                fontSize: styles.typography.fontSize.xxl,
+                fontWeight: styles.typography.fontWeight.bold,
+              }}
+            >
               Компоненты UI
             </div>
-            <div style={{ fontSize: styles.typography.fontSize.m, color: styles.colors.textSecondary }}>
+            <div
+              style={{ fontSize: styles.typography.fontSize.m, color: styles.colors.textSecondary }}
+            >
               Демонстрация библиотеки компонентов
             </div>
           </div>

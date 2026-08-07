@@ -1,7 +1,11 @@
 import App from '@/App';
 import { ThemeProvider } from '@/shared/theme';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import './App.css';
+
+const queryClient = new QueryClient();
 
 const container = document.getElementById('root');
 
@@ -14,7 +18,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </ThemeProvider>
   </React.StrictMode>,
 );
