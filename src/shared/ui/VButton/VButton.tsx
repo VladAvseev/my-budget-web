@@ -38,7 +38,7 @@ export const VButton = ({
       border: `1px solid ${styles.colors.border}`,
     },
     danger: {
-      backgroundColor: styles.colors.error,
+      backgroundColor: isHovered ? styles.colors.errorHover : styles.colors.error,
       border: 'none',
     },
   };

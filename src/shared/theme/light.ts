@@ -15,6 +15,7 @@ export const lightStyles = {
     warningBg: '#FDF1D0',
     warningBorder: '#F7DBA4',
     error: '#EF4444',
+    errorHover: '#DC2626',
     errorBg: '#FBE0E0',
     errorBorder: '#F5B8B8',
   },

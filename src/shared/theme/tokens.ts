@@ -39,3 +39,10 @@ export const shadow = {
   m: '0 4px 6px rgba(0,0,0,0.15)',
   l: '0 10px 20px rgba(0,0,0,0.2)',
 } as const;
+
+export const breakpoints = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+} as const;

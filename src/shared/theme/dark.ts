@@ -15,6 +15,7 @@ export const darkStyles = {
     warningBg: '#494437',
     warningBorder: '#67582F',
     error: '#D97070',
+    errorHover: '#C14E4E',
     errorBg: '#4A3B3C',
     errorBorder: '#6B3838',
   },
